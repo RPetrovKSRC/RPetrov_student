@@ -11,7 +11,7 @@ public class HW_02_03 {
         root1 = (b*(-1) + Math.sqrt(b*b - 4*a*c))/(2*a);
         root2 = (b*(-1) - Math.sqrt(b*b - 4*a*c))/(2*a);
 
-        if (Double.isNaN(root1) && Double.isNaN(root1)) {
+        if (Double.isNaN(root1) && Double.isNaN(root2)) {
             System.out.println("Корней нет");
         } else {
             System.out.println("Корни квадратного уравнения равны " + root1 + " и " + root2);
