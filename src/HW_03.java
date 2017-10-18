@@ -530,18 +530,62 @@ public class HW_03 {
     (примеры 2*3 и 3*2 и им подобные пары считать повторяющимися).
      */
     public static void task_18() {
-        int[] arr = new int[15];
+        ArrayList<String> list = new ArrayList<String>();
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
+        String xy, yx;
 
-        for (int i = 0; i < 15 ; i++){
-            int a = rand.nextInt(8) + 2;
+        for (int i = 0; i < 15; i++) {
+            do {
+                int x = rand.nextInt(8) + 2;
+                int y = rand.nextInt(8) + 2;
+                xy = x + "*" + y;
+                yx = y + "*" + x;
+            } while (list.indexOf(xy) > -1 || list.indexOf(yx) > -1);
+
+            list.add(xy);
         }
+
+        for (int i = 0; i < 15; i++) {
+            sb.append(list.get(i) + " ");
+        }
+
+        System.out.println(sb.toString());
     }
 
     /* Крипто*/
     public static void task_19() {
+        Scanner input = new Scanner(System.in);
+        byte[] msg = null, msgEnc, msgDec, key = null, msgKey;
 
+
+        System.out.print("Введите сообщение для шифрования: ");
+        if (input.hasNextLine()) msg = input.nextLine().getBytes();
+
+        System.out.print("Введите ключ: ");
+        if (input.hasNextLine()) key = input.nextLine().getBytes();
+
+        System.out.println("");
+        msgKey = new byte[msg.length];
+        msgEnc = new byte[msg.length];
+        msgDec = new byte[msg.length];
+
+        for (int m = 0; m < msgKey.length; m++) {
+            int index = m;
+            if (m >= key.length){
+                index = (m) % key.length;
+            }
+            msgKey[m] = key[index];
+        }
+
+        for (int m = 0; m < msg.length; m++) msgEnc[m] = (byte) (msg[m] ^ msgKey[m]);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Шифрованое сообщение - ");
+        sb.append(new String(msgEnc));
+        System.out.println(sb.toString());
+
+        for (int m = 0; m < msg.length; m++) msgDec[m] = (byte) (msgEnc[m] ^ msgKey[m]);
+        System.out.println("Дешифрованое сообщение - " + new String(msgDec));
     }
 
 }
