@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 import  java.util.Random;
 import java.util.Scanner;
 
@@ -21,8 +22,8 @@ public class HW_03 {
         //task_15();
         //task_16();
         //task_17();
-        task_18();
-        //task_19();
+        //task_18();
+        task_19();
     }
 
     /*

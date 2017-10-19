@@ -17,6 +17,7 @@
  23466
 Осталось 6 часов 
  */
+
 import java.util.Random;
 
 public class HW_02_07 {
@@ -26,14 +27,14 @@ public class HW_02_07 {
         int rnd = rand.nextInt(28801);
 
         System.out.println(rnd);
-        int ostatok = rnd%3600;
-        int hours = rnd/3600;
+        int ostatok = rnd % 3600;
+        int hours = rnd / 3600;
 
-        if(hours == 0 ){
+        if (hours == 0) {
             System.out.println(ost + "менее часа");
         } else {
 
-            switch (hours){
+            switch (hours) {
                 case 1:
                     System.out.println("Остался 1 час");
                     break;
@@ -49,7 +50,6 @@ public class HW_02_07 {
                     System.out.println(ost + hours + " часов");
                     break;
             }
-
         }
     }
 }

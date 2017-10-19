@@ -13,5 +13,6 @@ public class HW_02_20 {
             if(tmpStr.contains("4") || tmpStr.contains("13")) j++;
         }
         System.out.println("Придётся исключить номеров - " + j);
+
     }
 }
