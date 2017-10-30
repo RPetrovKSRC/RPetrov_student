@@ -2,14 +2,21 @@ package hw06;
 
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("LinkedList > List");
         List list = new LinkedList();
+
         list.add(new Item(1));
         list.add(new Item(2));
         list.add(new Item(3));
-        System.out.println(list.toMyString());
-        System.out.println(list.get(1).value);
 
+
+        //System.out.println(list.toMyString());
+
+        for(Object o: list) {
+            System.out.print( o  + " ");
+        }
+/*
         System.out.println("LinkedList > Stack");
         Stack stack = new LinkedList();
         stack.push(new Item(1));
@@ -27,20 +34,46 @@ public class Main {
         System.out.println(queue.toMyString());
         queue.poll();
         System.out.println(queue.toMyString());
+      */
 
         System.out.println("ArrayList > List");
         List alist = new ArrayList();
         alist.add(new Item(10));
         alist.add(new Item(20));
         alist.add(new Item(30));
+        alist.add(new Item(40));
+        alist.add(new Item(50));
+        alist.add(new Item(60));
+        for(Object o: alist) {
+            System.out.print( o  + " ");
+        }
+
+/*
+        System.out.println("ArrayList > List");
+        List alist = new ArrayList();
+        alist.add(new Item(10));
+        alist.add(new Item(20));
+        alist.add(new Item(30));
+        alist.add(new Item(40));
+        alist.add(new Item(50));
+        alist.add(new Item(60));
         System.out.println(alist.toMyString());
         System.out.println(alist.get(1).value);
+        alist.remove(2);
+        System.out.println(alist.toMyString());
+        alist.remove(3);
+        System.out.println(alist.toMyString());
 
         System.out.println("ArrayList > Stack");
         Stack astack = new LinkedList();
         astack.push(new Item(10));
         astack.push(new Item(20));
         astack.push(new Item(30));
+        astack.push(new Item(40));
+        astack.push(new Item(50));
+        astack.push(new Item(60));
+        System.out.println(astack.toMyString());
+        astack.pop();
         System.out.println(astack.toMyString());
         astack.pop();
         System.out.println(astack.toMyString());
@@ -50,10 +83,15 @@ public class Main {
         aqueue.add(new Item(10));
         aqueue.add(new Item(20));
         aqueue.add(new Item(30));
+        aqueue.add(new Item(40));
+        aqueue.add(new Item(50));
+        aqueue.add(new Item(60));
         System.out.println(aqueue.toMyString());
         aqueue.poll();
         System.out.println(aqueue.toMyString());
-
+        aqueue.poll();
+        System.out.println(aqueue.toMyString());
+*/
         /*
         LinkedList list = new LinkedList();
         list.add(4);

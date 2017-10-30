@@ -1,18 +1,18 @@
 package hw06;
 
+import java.util.Iterator;
+
 public class LinkedList implements List, Stack, Queue {
     Node head;
     int elements = 0;
 
-    public LinkedList() {
-        head = new Node();
-    }
+    public LinkedList() { head = new Node();}
 
     // List
     @Override
-    public void add(Item item) {
+    public void add(Item object) {
         Node newNode = new Node();
-        newNode.value = item;
+        newNode.value = object;
 
         if (head.next == null) {
             head.next = newNode;
@@ -101,24 +101,25 @@ public class LinkedList implements List, Stack, Queue {
             node = nextnode;
         }
     }
-@Override
+
+    @Override
     public String toMyString() {
         StringBuilder sb = new StringBuilder();
         Node node = head.next;
 
         while (node.next != null) {
-            sb.append(node.value.value + " ");
+            sb.append(node.value + " ");
             node = node.next;
         }
-        sb.append(node.value.value + " ");
+        sb.append(node.value + " ");
         return sb.toString();
     }
 
     // Stack LIFO
     @Override
-    public void push(Item item) {
+    public void push(Item object) {
         Node firstNode = new Node();
-        firstNode.value = item;
+        firstNode.value = object;
 
         if (head.next == null) {
             head.next = firstNode;
@@ -144,5 +145,33 @@ public class LinkedList implements List, Stack, Queue {
         Node firstNode = head.next;
         head.next = firstNode.next;
         return firstNode.value;
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new LLIterator(head);
+    }
+
+    private static class LLIterator implements Iterator {
+       private Node next;
+
+       private LLIterator(Node nextNode) {
+        this.next = nextNode;
+       }
+
+        @Override
+        public boolean hasNext() {
+            if (next.next != null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        @Override
+        public Object next() {
+            next = next.next;
+            return next.value;
+        }
     }
 }

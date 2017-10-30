@@ -7,5 +7,8 @@ public class Item {
         this.value = value;
     }
 
-    public Item() {}
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
 }
