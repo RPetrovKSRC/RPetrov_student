@@ -1,6 +1,6 @@
 package hw05;
 
-public class Ellipse extends Shape {
+public class Ellipse implements Shape {
     int a;
     int b;
 

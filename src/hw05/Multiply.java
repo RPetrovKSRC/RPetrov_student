@@ -1,8 +1,8 @@
 package hw05;
 
 public class Multiply extends Operation {
-    public Multiply() {
-    }
+//    public Multiply() {
+//    }
 
     @Override
     public int doOperation(int a, int b) {

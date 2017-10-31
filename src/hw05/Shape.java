@@ -1,5 +1,6 @@
 package hw05;
 
-public class Shape {
-
+public interface Shape {
+    void getPerimetrLength();
+    void getSquare();
 }

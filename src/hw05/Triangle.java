@@ -1,6 +1,6 @@
 package hw05;
 
-public class Triangle extends Shape {
+public class Triangle implements Shape {
     int a; // основание
     int h; // высота
 

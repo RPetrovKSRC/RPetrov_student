@@ -1,9 +1,9 @@
 package hw06;
 
 public class Item {
-   int value;
+   public Object value;
 
-    public Item(int value) {
+    public Item(Object value) {
         this.value = value;
     }
 
