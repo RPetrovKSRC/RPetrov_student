@@ -8,6 +8,16 @@ public class LinkedList implements List, Stack, Queue {
 
     public LinkedList() { head = new Node();}
 
+    //@Override
+    public boolean equals(LinkedList otherList) {
+        if(this.elements != otherList.elements) return false;
+
+        for (int i = 0; i < this.elements ; i++) {
+            if (this.get(i).value != otherList.get(i).value & !this.get(i).value.toString().equals(otherList.get(i).value.toString())) return false;
+        }
+        return true;
+    }
+
     // List
     @Override
     public void add(Item object) {

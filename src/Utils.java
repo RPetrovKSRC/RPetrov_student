@@ -45,6 +45,7 @@ public class Utils {
 
         System.out.println("Utils transrorm - " + transList.toMyString());
         */
+        /*
 Object[] arr = new Object[4];
 arr[0] = new Item(4);
         arr[1] = new Item("da");
@@ -54,7 +55,31 @@ arr[0] = new Item(4);
         List arrList = Utils.toList(arr);
 
         System.out.println("arrList = " + arrList.toMyString());
+*/
 
+        List list1 = new LinkedList();
+        List list2 = new LinkedList();
+
+        Item item = new Item("1a");
+        list1.add(item);
+        list2.add(item);
+        item = new Item(2);
+                list1.add(item);
+        list2.add(item);
+        item = new Item(33);
+        list1.add(item);
+        list2.add(item);
+
+
+
+        /*
+        list2.add(new Item("1a"));
+        list2.add(new Item(2));
+        list2.add(new Item(33));
+*/
+
+        boolean q = list1.equals(list2);
+        System.out.println("Equals = " + q);
     }
 
     public static Object find(Predicate pred, List list) {
