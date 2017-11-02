@@ -1,3 +1,5 @@
+package old;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -377,8 +379,10 @@ public class HW_02 {
             }
             //System.out.println(nStr);
 
-            sumLeft = Integer.valueOf(nStr.charAt(0)) + Integer.valueOf(nStr.charAt(1)) + Integer.valueOf(nStr.charAt(2));
-            sumRight = Integer.valueOf(nStr.charAt(3)) + Integer.valueOf(nStr.charAt(4)) + Integer.valueOf(nStr.charAt(5));
+            //sumLeft = Integer.valueOf(nStr.charAt(0)) + Integer.valueOf(nStr.charAt(1)) + Integer.valueOf(nStr.charAt(2));
+            //sumRight = Integer.valueOf(nStr.charAt(3)) + Integer.valueOf(nStr.charAt(4)) + Integer.valueOf(nStr.charAt(5));
+            sumLeft =  Integer.valueOf(nStr.charAt(0) + nStr.charAt(1) + nStr.charAt(2));
+            sumRight = Integer.valueOf(nStr.charAt(3) + nStr.charAt(4) + nStr.charAt(5));
 
             if (sumLeft == sumRight){
                 res++;

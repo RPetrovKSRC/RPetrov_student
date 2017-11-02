@@ -1,5 +1,9 @@
-package hw06;
+package current;
 
+import interfaces.Item;
+import interfaces.List;
+import interfaces.Queue;
+import interfaces.Stack;
 import java.util.Iterator;
 
 public class LinkedList implements List, Stack, Queue {
@@ -8,17 +12,19 @@ public class LinkedList implements List, Stack, Queue {
 
     public LinkedList() { head = new Node();}
 
-    //@Override
-    public boolean equals(LinkedList otherList) {
-        if(this.elements != otherList.elements) return false;
-
-        for (int i = 0; i < this.elements ; i++) {
+    @Override
+    public boolean equals(Object o) {
+        LinkedList otherList = (LinkedList) o;
+        if(this.size() != otherList.size()) return false;
+       // System.out.println(this.size());
+        for (int i = 0; i < this.size() ; i++) {
+            System.out.println(this.get(i).value.toString() + " === " + otherList.get(i).value.toString());
             if (this.get(i).value != otherList.get(i).value & !this.get(i).value.toString().equals(otherList.get(i).value.toString())) return false;
         }
         return true;
     }
 
-    // List
+    // interfaces.List
     @Override
     public void add(Item object) {
         Node newNode = new Node();
@@ -29,6 +35,7 @@ public class LinkedList implements List, Stack, Queue {
         } else {
             getLastNode().next = newNode;
         }
+        elements++;
     }
 
     public Node getLastNode() {
@@ -75,7 +82,7 @@ public class LinkedList implements List, Stack, Queue {
         int i = 0;
         Node node = head.next;
 
-        while (node.next != null) {
+        while (node.next != null | node.value != null) {
             if (i == index) {
                 return node.value;
             }
@@ -110,6 +117,7 @@ public class LinkedList implements List, Stack, Queue {
             prevnode = node;
             node = nextnode;
         }
+        elements--;
     }
 
     @Override
@@ -125,7 +133,7 @@ public class LinkedList implements List, Stack, Queue {
         return sb.toString();
     }
 
-    // Stack LIFO
+    // interfaces.Stack LIFO
     @Override
     public void push(Item object) {
         Node firstNode = new Node();
@@ -138,6 +146,7 @@ public class LinkedList implements List, Stack, Queue {
             head.next = firstNode;
             firstNode.next = secondNode;
         }
+        elements++;
     }
 
     @Override
@@ -147,13 +156,14 @@ public class LinkedList implements List, Stack, Queue {
         return firstNode.value;
     }
 
-    //Queue FIFO
-    //public void add(Item item) {} defined in List
+    //interfaces.Queue FIFO
+    //public void add(Item item) {} defined in interfaces.List
 
     @Override
     public Item poll() {
         Node firstNode = head.next;
         head.next = firstNode.next;
+        elements--;
         return firstNode.value;
     }
 
@@ -163,7 +173,7 @@ public class LinkedList implements List, Stack, Queue {
     }
 
     private static class LLIterator implements Iterator {
-       private Node next;
+       Node next;
 
        private LLIterator(Node nextNode) {
         this.next = nextNode;

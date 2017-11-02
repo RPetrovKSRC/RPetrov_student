@@ -1,6 +1,7 @@
-import java.util.Arrays;
+package old;
+
 import java.util.ArrayList;
-import  java.util.Random;
+import java.util.Random;
 import java.util.Scanner;
 
 public class HW_03 {
@@ -531,7 +532,7 @@ public class HW_03 {
     (примеры 2*3 и 3*2 и им подобные пары считать повторяющимися).
      */
     public static void task_18() {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList list = new ArrayList();
         StringBuilder sb = new StringBuilder();
         Random rand = new Random();
         String xy, yx;

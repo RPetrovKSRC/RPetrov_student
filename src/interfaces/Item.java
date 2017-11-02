@@ -1,7 +1,7 @@
-package hw06;
+package interfaces;
 
 public class Item {
-   public Object value;
+    public Object value;
 
     public Item(Object value) {
         this.value = value;

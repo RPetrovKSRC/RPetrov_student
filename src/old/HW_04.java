@@ -1,14 +1,19 @@
+package old;
+
+import current.Book;
+import current.Library;
+
 public class HW_04 {
     public static void main(String[] args) {
 /*
-        Adder adder = new Adder(6);
-        System.out.println("Adder value - " + adder.x);
+        current.Adder adder = new current.Adder(6);
+        System.out.println("current.Adder value - " + adder.x);
         adder.add();
-        System.out.println("Adder value - " + adder.x);
+        System.out.println("current.Adder value - " + adder.x);
         adder.add();
-        System.out.println("Adder value - " + adder.x);
+        System.out.println("current.Adder value - " + adder.x);
 *//*
-        IntList list = new IntList();
+        current.IntList list = new current.IntList();
         list.add(0);
         list.add(1);
         list.add(25);
@@ -22,7 +27,7 @@ public class HW_04 {
         list.remove(3);
         System.out.println(list.toMyString());
 */
-       // new IntList(1);
+       // new current.IntList(1);
         Book book1 = new Book("Агата Кристи", "9 негритят", 350);
         Book book2 = new Book("Джоан Роулинг", "Гарри Поттер", 850);
         Book book3 = new Book("Лев Толстой", "Война и мир", 2500);

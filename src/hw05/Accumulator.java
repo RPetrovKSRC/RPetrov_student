@@ -1,8 +1,8 @@
 package hw05;
 
-import hw06.Item;
-import hw06.LinkedList;
-import hw06.List;
+import current.LinkedList;
+import interfaces.Item;
+import interfaces.List;
 
 public class Accumulator {
     private int value;

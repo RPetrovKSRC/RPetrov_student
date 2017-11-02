@@ -1,10 +1,14 @@
-package hw06;
+package current;
+
+import interfaces.Item;
+import interfaces.List;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("LinkedList > List");
-        List list = new LinkedList();
+/*
+        System.out.println("current.LinkedList > interfaces.List");
+        //List list = (List) new current.LinkedList();
+        List list = new current.LinkedList();
 
         list.add(new Item(1));
         list.add(new Item(2));
@@ -16,9 +20,10 @@ public class Main {
         for(Object o: list) {
             System.out.print( o  + " ");
         }
+        */
 /*
-        System.out.println("LinkedList > Stack");
-        Stack stack = new LinkedList();
+        System.out.println("current.LinkedList > interfaces.Stack");
+        interfaces.Stack stack = new current.LinkedList();
         stack.push(new Item(1));
         stack.push(new Item(2));
         stack.push(new Item(3));
@@ -26,8 +31,8 @@ public class Main {
         stack.pop();
         System.out.println(stack.toMyString());
 
-        System.out.println("LinkedList > Queue");
-        Queue queue = new LinkedList();
+        System.out.println("current.LinkedList > interfaces.Queue");
+        interfaces.Queue queue = new current.LinkedList();
         queue.add(new Item(1));
         queue.add(new Item(2));
         queue.add(new Item(3));
@@ -36,7 +41,7 @@ public class Main {
         System.out.println(queue.toMyString());
       */
 
-        System.out.println("ArrayList > List");
+        System.out.println("current.ArrayList > interfaces.List");
         List alist = new ArrayList();
         alist.add(new Item(10));
         alist.add(new Item(20));
@@ -48,9 +53,10 @@ public class Main {
             System.out.print( o  + " ");
         }
 
+
 /*
-        System.out.println("ArrayList > List");
-        List alist = new ArrayList();
+        System.out.println("current.ArrayList > interfaces.List");
+        interfaces.List alist = new current.ArrayList();
         alist.add(new Item(10));
         alist.add(new Item(20));
         alist.add(new Item(30));
@@ -64,8 +70,8 @@ public class Main {
         alist.remove(3);
         System.out.println(alist.toMyString());
 
-        System.out.println("ArrayList > Stack");
-        Stack astack = new LinkedList();
+        System.out.println("current.ArrayList > interfaces.Stack");
+        interfaces.Stack astack = new current.LinkedList();
         astack.push(new Item(10));
         astack.push(new Item(20));
         astack.push(new Item(30));
@@ -78,8 +84,8 @@ public class Main {
         astack.pop();
         System.out.println(astack.toMyString());
 
-        System.out.println("ArrayList > Queue");
-        Queue aqueue = new LinkedList();
+        System.out.println("current.ArrayList > interfaces.Queue");
+        interfaces.Queue aqueue = new current.LinkedList();
         aqueue.add(new Item(10));
         aqueue.add(new Item(20));
         aqueue.add(new Item(30));
@@ -93,7 +99,7 @@ public class Main {
         System.out.println(aqueue.toMyString());
 */
         /*
-        LinkedList list = new LinkedList();
+        current.LinkedList list = new current.LinkedList();
         list.add(4);
         list.add(1);
         list.add(25);

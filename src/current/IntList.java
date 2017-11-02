@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
+package current;
 
 public class IntList {
     Item head;

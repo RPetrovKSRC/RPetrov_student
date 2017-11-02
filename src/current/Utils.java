@@ -1,13 +1,13 @@
-import hw06.ArrayList;
-import hw06.Item;
-import hw06.LinkedList;
-import hw06.List;
+package current;
 
+import interfaces.*;
+
+@SuppressWarnings("UnnecessaryLocalVariable")
 public class Utils {
 
     public static void main(String[] args) {
         /*
-        List list = new LinkedList();
+        interfaces.List list = new current.LinkedList();
         list.add(new Item("1a"));
         list.add(new Item(2));
         list.add(new Item(33));
@@ -17,33 +17,33 @@ public class Utils {
 
         System.out.println("list - " + list.toMyString());
 
-        Object o = Utils.find(new Predicate() {
+        Object o = current.Utils.find(new interfaces.Predicate() {
             @Override
             public boolean apply(Object o) {
                 return "2".equals(o.toString());
             }
         }, list);
 
-        System.out.println("Utils find - " + o);
+        System.out.println("current.Utils find - " + o);
 
 
-       List findList = Utils.filter(new Predicate() {
+       interfaces.List findList = current.Utils.filter(new interfaces.Predicate() {
             @Override
             public boolean apply(Object o) {
                 return o.toString().length() == 1;
             }
         }, list);
 
-        System.out.println("Utils filter - " + findList.toMyString());
+        System.out.println("current.Utils filter - " + findList.toMyString());
 
-        List transList = Utils.transform(new Transformer() {
+        interfaces.List transList = current.Utils.transform(new interfaces.Transformer() {
             @Override
             public Object apply(Object o) {
                 return new Item (o.toString() + o.toString());
             }
         }, list);
 
-        System.out.println("Utils transrorm - " + transList.toMyString());
+        System.out.println("current.Utils transrorm - " + transList.toMyString());
         */
         /*
 Object[] arr = new Object[4];
@@ -52,7 +52,7 @@ arr[0] = new Item(4);
         arr[2] = new Item(5);
         arr[3] = new Item("%");
 
-        List arrList = Utils.toList(arr);
+        interfaces.List arrList = current.Utils.toList(arr);
 
         System.out.println("arrList = " + arrList.toMyString());
 */
@@ -69,8 +69,7 @@ arr[0] = new Item(4);
         item = new Item(33);
         list1.add(item);
         list2.add(item);
-
-
+        //list2.add(new Item(31));
 
         /*
         list2.add(new Item("1a"));
@@ -120,6 +119,7 @@ arr[0] = new Item(4);
         return resultList;
     }
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     public static List differencet(List list1, List list2, Predicate2 pred) {
         List resultList = new LinkedList();
         return resultList;

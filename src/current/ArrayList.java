@@ -1,4 +1,9 @@
-package hw06;
+package current;
+
+import interfaces.Item;
+import interfaces.List;
+import interfaces.Queue;
+import interfaces.Stack;
 
 import java.util.Iterator;
 
@@ -32,7 +37,7 @@ public class ArrayList implements List, Stack, Queue {
         }
     }
 
-    //List
+    //interfaces.List
     @Override
     public void add(Item object) {
         for (int i = 0; i < array.length; i++) {
@@ -46,9 +51,9 @@ public class ArrayList implements List, Stack, Queue {
     @Override
     public String toMyString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null) {
-                sb.append(array[i].value + " ");
+        for (Item anArray : array) {
+            if (anArray != null) {
+                sb.append(anArray.value + " ");
             }
         }
         return sb.toString();
@@ -80,7 +85,7 @@ public class ArrayList implements List, Stack, Queue {
         return 0;
     }
 
-    // Stack LIFO
+    // interfaces.Stack LIFO
     @Override
     public void push(Item object) {
         for (int i = 0; i < array.length; i++) {
@@ -103,7 +108,7 @@ public class ArrayList implements List, Stack, Queue {
         }
         return object;
     }
-    //Queue FIFO
+    //interfaces.Queue FIFO
 
     @Override
     public Item poll() {

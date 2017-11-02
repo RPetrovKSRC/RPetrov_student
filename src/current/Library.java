@@ -1,3 +1,5 @@
+package current;
+
 public class Library {
     protected final int shelfQuantity = 3;
     private BookShelf[] shelfArray = new BookShelf[shelfQuantity];
@@ -7,11 +9,11 @@ public class Library {
     }
 /*
     public static void main(String[] args) {
-        Library mylib = new Library();
-        Book book1 = new Book("Агата Кристи", "9 негритят", 350);
-        Book book2 = new Book("Джоан Роулинг", "Гарри Поттер", 850);
-        Book book3 = new Book("Лев Толстой", "Война и мир", 2500);
-        Book book4 = new Book("Братья Стругацкие", "Пикник на обочине", 430);
+        current.Library mylib = new current.Library();
+        current.Book book1 = new current.Book("Агата Кристи", "9 негритят", 350);
+        current.Book book2 = new current.Book("Джоан Роулинг", "Гарри Поттер", 850);
+        current.Book book3 = new current.Book("Лев Толстой", "Война и мир", 2500);
+        current.Book book4 = new current.Book("Братья Стругацкие", "Пикник на обочине", 430);
 
     }*/
 

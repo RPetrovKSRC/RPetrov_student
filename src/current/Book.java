@@ -1,3 +1,5 @@
+package current;
+
 public class Book {
     String author;
     String title;
