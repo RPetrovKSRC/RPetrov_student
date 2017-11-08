@@ -1,11 +1,8 @@
 package current;
 
-import interfaces.Item;
-
 class Node {
-    Item value;
+    Object value;
     Node next;
 
-    Node() {
-    }
+    Node() {}
 }

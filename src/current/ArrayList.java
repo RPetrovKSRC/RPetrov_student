@@ -8,7 +8,7 @@ import interfaces.Stack;
 import java.util.Iterator;
 
 public class ArrayList implements List, Stack, Queue {
-    Item[] array = new Item[10];
+    Object[] array = new Object[10];
 
     @Override
     public Iterator iterator() {
@@ -31,15 +31,15 @@ public class ArrayList implements List, Stack, Queue {
 
         @Override
         public Object next() {
-            Item item = array[index];
+            Object object = array[index];
             index++;
-            return item;
+            return object;
         }
     }
 
     //interfaces.List
     @Override
-    public void add(Item object) {
+    public void add(Object object) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = object;
@@ -51,16 +51,16 @@ public class ArrayList implements List, Stack, Queue {
     @Override
     public String toMyString() {
         StringBuilder sb = new StringBuilder();
-        for (Item anArray : array) {
+        for (Object anArray : array) {
             if (anArray != null) {
-                sb.append(anArray.value + " ");
+                sb.append(anArray + " ");
             }
         }
         return sb.toString();
     }
 
-    public Item get(int index) {
-        Item object = null;
+    public Object get(int index) {
+        Object object = null;
         for (int i = 0; i < array.length; i++) {
             if (i == index-1) {
                 object = array[i];
@@ -87,7 +87,7 @@ public class ArrayList implements List, Stack, Queue {
 
     // interfaces.Stack LIFO
     @Override
-    public void push(Item object) {
+    public void push(Object object) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = object;
@@ -97,8 +97,8 @@ public class ArrayList implements List, Stack, Queue {
     }
 
     @Override
-    public Item pop() {
-        Item object = null;
+    public Object pop() {
+        Object object = null;
         for (int i = array.length; i >= 0; i--) {
             if (array[i] != null) {
                 object = array[i];
@@ -108,11 +108,11 @@ public class ArrayList implements List, Stack, Queue {
         }
         return object;
     }
-    //interfaces.Queue FIFO
 
+    //interfaces.Queue FIFO
     @Override
-    public Item poll() {
-        Item object = null;
+    public Object poll() {
+        Object object = null;
         if (array[0] != null) {
             object = array[0];
         }

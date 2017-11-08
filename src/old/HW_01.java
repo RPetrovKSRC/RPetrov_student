@@ -36,15 +36,15 @@ public class HW_01 {
     }
 
     public static void Task_04() {
-        int n, ten, hundred, first, ostatok;
+        int n, ten, hundred, first, remain;
         n = 285;
         ten = 10;
         hundred = ten * 10;
         first = n / hundred;
-        ostatok = n % hundred;
+        remain = n % hundred;
 
         System.out.println("n = " + n);
-        System.out.println("Сумма = " + (first + ostatok / ten + ostatok % ten));
+        System.out.println("Сумма = " + (first + remain / ten + remain % ten));
     }
 
     public static void Task_05() {

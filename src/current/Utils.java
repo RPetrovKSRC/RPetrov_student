@@ -2,7 +2,6 @@ package current;
 
 import interfaces.*;
 
-@SuppressWarnings("UnnecessaryLocalVariable")
 public class Utils {
 
     public static void main(String[] args) {
@@ -64,64 +63,127 @@ arr[0] = new Item(4);
         list1.add(item);
         list2.add(item);
         item = new Item(2);
-                list1.add(item);
+        list1.add(item);
         list2.add(item);
         item = new Item(33);
         list1.add(item);
-        list2.add(item);
-        //list2.add(new Item(31));
-
-        /*
-        list2.add(new Item("1a"));
-        list2.add(new Item(2));
-        list2.add(new Item(33));
-*/
+        //list2.add(item);
+        list2.add(new Item(31));
 
         boolean q = list1.equals(list2);
         System.out.println("Equals = " + q);
+
+        interfaces.List intersectedList = current.Utils.intersect(new interfaces.Predicate2() {
+            @Override
+            public boolean apply(Object o1, Object o2) {
+                if (o1 == o2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }, list1, list2);
+
+
+        System.out.println("current.Utils intersect - " + intersectedList.toMyString());
+
+        interfaces.List differencedList = current.Utils.difference(new interfaces.Predicate2() {
+            @Override
+            public boolean apply(Object o1, Object o2) {
+                if (o1 == o2) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }, list1, list2);
+        System.out.println("current.Utils difference - " + differencedList.toMyString());
     }
 
     public static Object find(Predicate pred, List list) {
-        for (Object o : list){
-            if (pred.apply(o)) return o;
+        for (Object o : list) {
+            if (pred.apply(o))
+                return o;
         }
         return null;
     }
 
-    public static List filter (Predicate pred, List list) {
+    public static List filter(Predicate pred, List list) {
         List resList = new LinkedList();
-        for (Object o : list){
+        for (Object o : list) {
             if (pred.apply(o)) {
-                resList.add((Item) o);
+                resList.add(o);
             }
         }
         return resList;
     }
 
-    public static List transform (Transformer trans, List list) {
+    public static List transform(Transformer trans, List list) {
         List resList = new LinkedList();
-        for (Object o : list){
-            resList.add((Item) trans.apply(o)) ;
+        for (Object o : list) {
+            resList.add(trans.apply(o));
         }
         return resList;
     }
 
-    public static List toList (Object[] arr) {
+    public static List toList(Object[] arr) {
         List resultList = new ArrayList();
-        for( Object o: arr){
-            resultList.add(new Item(o));
+        for (Object o : arr) {
+            resultList.add(o);
         }
-       return  resultList;
-    }
-
-    public static List intersect(List list1, List list2, Predicate2 pred) {
-        List resultList = new LinkedList();
         return resultList;
     }
 
-    @SuppressWarnings("UnnecessaryLocalVariable")
-    public static List differencet(List list1, List list2, Predicate2 pred) {
+    public static List intersect(Predicate2 pred, List list1, List list2) {
         List resultList = new LinkedList();
+        if (pred == null) {
+            for (Object o1 : list1) {
+                for (Object o2 : list2) {
+                    if (o1.equals(o2)) {
+                        resultList.add(o1);
+                        break;
+                    }
+                }
+            }
+        } else {
+            for (Object o1 : list1) {
+                for (Object o2 : list2) {
+                    if (pred.apply(o1, o2)) {
+                        resultList.add(o1);
+                    }
+                }
+            }
+        }
+        return resultList;
+    }
+
+    public static List difference(Predicate2 pred, List list1, List list2) {
+        List resultList = new LinkedList();
+        boolean isUniqueItem;
+        for (Object o1 : list1) {
+            isUniqueItem = true;
+            for (Object o2 : list2) {
+                if (pred.apply(o1, o2)) {
+                    isUniqueItem = false;
+                    break;
+                }
+            }
+            if (isUniqueItem) {
+                resultList.add(o1);
+            }
+        }
+        for (Object o2 : list2) {
+            isUniqueItem = true;
+            for (Object o1 : list1) {
+                if (pred.apply(o1, o2)) {
+                    isUniqueItem = false;
+                    break;
+                }
+            }
+            if (isUniqueItem) {
+                resultList.add(o2);
+            }
+        }
         return resultList;
     }
 }

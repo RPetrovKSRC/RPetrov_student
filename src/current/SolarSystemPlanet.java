@@ -23,6 +23,18 @@ public enum SolarSystemPlanet {
         this.orbitAu = orbit;
     }
 
+    public float getMassEM() {
+        return massEM;
+    }
+
+    public long getRadiusKm() {
+        return radiusKm;
+    }
+
+    public float getOrbitAu() {
+        return orbitAu;
+    }
+
     public static void main(String[] args) {
         System.out.println("Mars - " + SolarSystemPlanet.MARS.orbitAu * AU);
     }

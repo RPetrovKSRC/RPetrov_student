@@ -5,22 +5,30 @@ import interfaces.List;
 
 public class Main {
     public static void main(String[] args) {
-/*
+
         System.out.println("current.LinkedList > interfaces.List");
         //List list = (List) new current.LinkedList();
-        List list = new current.LinkedList();
+        List list = new LinkedList();
 
-        list.add(new Item(1));
-        list.add(new Item(2));
-        list.add(new Item(3));
-
+        list.add(1);
+        list.add(2);
+        list.add("3");
+        list.add(4);
 
         //System.out.println(list.toMyString());
 
         for(Object o: list) {
             System.out.print( o  + " ");
         }
-        */
+        System.out.println("HashCode = " + list.hashCode());
+
+        List list1 = new LinkedList();
+        list1.add(1);
+        list1.add("2");
+        list1.add(3);
+        list1.add(4);
+        System.out.println("HashCode = " + list1.hashCode());
+
 /*
         System.out.println("current.LinkedList > interfaces.Stack");
         interfaces.Stack stack = new current.LinkedList();
