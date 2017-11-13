@@ -13,6 +13,8 @@ public class User {
     
     @Override
     public boolean equals(Object o) {
+        if (this == o) { return true; }
+        if (o == null) { return false; }
         User user = (User) o;
         return this.name.equals(user.name);
     }
