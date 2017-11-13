@@ -16,9 +16,11 @@ public class ShopProcessor {
     private static final String SHOWU_CMD = "listu";
     private static final String EXIT_CMD = "q";
     
+    //private static HashMap <Integer, String> usersMap = new HashMap <Integer, String>();
     private static HashMap usersMap = new HashMap();
     private static HashMap productsMap = new HashMap();
     private static double account = 0;
+    private static User currentUser = null;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -26,49 +28,48 @@ public class ShopProcessor {
 
         initShop();
         
-        System.out.println("Ready to service. Welcome!");
+        System.out.println("* Ready to service.");
         while (true) {
             String line = scanner.nextLine().trim();
             String [] params = line.split(" ");
             String command = params[0];
 
             if (null == command)
-                System.out.println("Unknown command. Try again");
+                System.out.println("* Unknown command. Try again");
 
             else switch (command) {
                 case EXIT_CMD:
                     return;
                 case BUY_CMD:
-                    System.out.println("Command = " + command);
+                    System.out.println("* Command = " + command);
                     break;
                 case LOGIN_CMD:
-                    System.out.println("Command = " + command);
+                    User user = new User(params[1], params[2]);
+                    processor.login(user);
                     break;
                 case LOGOUT_CMD:
-                    System.out.println("Command = " + command);
+                    processor.logout();
                     break;
                 case REG_CMD:
-                    //System.out.println("Command = " + command);
                     User newUser = new User(params[1], params[2]);
-                    usersMap.put(newUser.hashCode(), newUser);
+                    processor.register(newUser);
                     break;
-                case DEPOSIT_CMD:
-                    System.out.println("Command = " + command);
+                case DEPOSIT_CMD:               
+                    processor.deposit(Double.valueOf(params[1]));
                     break;
                 case ADD_CMD:
-                    System.out.println("Command = " + command);
+                    System.out.println("* Command = " + command);
                     break;
                 case REMOVE_CMD:
-                    System.out.println("Command = " + command);
+                    System.out.println("* Command = " + command);
                     break;
                 case SHOWP_CMD:
-                   //System.out.println("Command = " + command);
                     for (Object p : productsMap.values()){
                         System.out.println(p.toString());
                     }
                     break;
                 case SHOWT_CMD:
-                    System.out.println("Command = " + command);
+                    System.out.println("* Command = " + command);
                     break;
                 case SHOWU_CMD:
                    //System.out.println("Command = " + command);
@@ -77,7 +78,7 @@ public class ShopProcessor {
                     }
                     break;
                 default:
-                    System.out.println("Unknown command. Try again");
+                    System.out.println("* Unknown command. Try again");
                     break;
             }
 
@@ -100,5 +101,50 @@ public class ShopProcessor {
         productsMap.put(6, product);
         product = new Product(7, "Тетрадь", "В полосочку", 200, 45);
         productsMap.put(7, product);
+    }
+    
+    private void register (User newUser){
+        if (usersMap.containsKey(newUser.hashCode())) {
+            System.out.println("* Already registered - " + newUser.name);
+        } else {
+            usersMap.put(newUser.hashCode(), newUser);
+            System.out.println("* Register succes- " + newUser.name);
+        }
+    }
+    
+    private void login(User user) {
+        if (currentUser != null) {
+            System.out.println("* Someone user still active.");
+            return;
+        }
+        if (!usersMap.containsKey(user.hashCode())) {
+            System.out.println("* Not found - " + user.name);
+            return;
+        }
+        User storedUser = (User) usersMap.get(user.hashCode());
+        if (storedUser.password.equals(user.password)) {
+            currentUser = user;
+            System.out.println("* Welcome - " + user.name);
+        } else {
+            System.out.println("* Wrong password - " + user.name);
+        }
+    }
+    
+    private void logout() {
+        if (currentUser == null) {
+            System.out.println("* No active user");
+        } else {
+            System.out.println("* Bye - " + currentUser.name);
+            currentUser = null;
+        }
+    }
+ 
+        private void deposit(Double coins) {
+        if (currentUser == null) {
+            System.out.println("* No active user");
+        } else {
+            currentUser.account = coins;
+            System.out.println("* " + currentUser.name + " account is " + currentUser.account);
+        }
     }
 }
