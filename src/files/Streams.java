@@ -93,4 +93,12 @@ public class Streams {
             }
         }
     }
+
+    public void encode(String inFilePath, String keyFilePath) {
+
+    }
+
+    public void decode(String inFilePath, String keyFilePath) {
+
+    }
 }

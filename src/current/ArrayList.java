@@ -9,6 +9,7 @@ import java.util.Iterator;
 
 public class ArrayList implements List, Stack, Queue {
     Object[] array = new Object[10];
+    int elements = 0;
 
     @Override
     public Iterator iterator() {
@@ -43,6 +44,7 @@ public class ArrayList implements List, Stack, Queue {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = object;
+                elements++;
                 break;
             }
         }
@@ -60,6 +62,9 @@ public class ArrayList implements List, Stack, Queue {
     }
 
     public Object get(int index) {
+        if (index > size()) {
+            throw new IndexOutOfBoundsException("No such element");
+        }
         Object object = null;
         for (int i = 0; i < array.length; i++) {
             if (i == index-1) {
@@ -82,7 +87,7 @@ public class ArrayList implements List, Stack, Queue {
     }
 
     public int size() {
-        return 0;
+        return elements;
     }
 
     // interfaces.Stack LIFO
@@ -91,6 +96,7 @@ public class ArrayList implements List, Stack, Queue {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null) {
                 array[i] = object;
+                elements++;
                 break;
             }
         }

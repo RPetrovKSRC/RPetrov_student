@@ -103,7 +103,10 @@ public class LinkedList implements List, Stack, Queue {
     }*/
 
     public Object get(int index) {
-        int i = 0;
+        if (index > size()) {
+            throw new IndexOutOfBoundsException("No such element");
+        }
+        int i = 1;
         Node node = head.next;
 
         while (node.next != null | node.value != null) {

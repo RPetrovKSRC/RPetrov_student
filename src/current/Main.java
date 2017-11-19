@@ -9,11 +9,13 @@ public class Main {
         System.out.println("current.LinkedList > interfaces.List");
         //List list = (List) new current.LinkedList();
         List list = new LinkedList();
+//        List list = new ArrayList();
 
         list.add(1);
         list.add(2);
         list.add("3");
         list.add(4);
+        System.out.println(list.get(5));
 
         //System.out.println(list.toMyString());
 
