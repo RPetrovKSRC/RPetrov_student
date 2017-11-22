@@ -1,3 +1,5 @@
+package files;
+
 import java.io.*;
 
 public class FileEncoder  {
@@ -10,11 +12,11 @@ public class FileEncoder  {
         byte keyByte;
         byte outByte;
         try {
-            key = new FileInputStream(new File("C:\\IdeaProjects\\key.log"));
-//            in = new FileInputStream(new File("C:\\IdeaProjects\\setup.log"));
-//            out = new FileOutputStream(new File("C:\\IdeaProjects\\out.txt"));
-            in = new FileInputStream(new File("C:\\IdeaProjects\\out.txt"));
-            out = new FileOutputStream(new File("C:\\IdeaProjects\\out_decode.txt"));
+            key = new FileInputStream(new File("C:\\Test\\key.log"));
+//            in = new FileInputStream(new File("C:\\Test\\Brom_dll.log"));
+//            out = new FileOutputStream(new File("C:\\Test\\out_encode.txt"));
+            in = new FileInputStream(new File("C:\\Test\\out_encode.txt"));
+            out = new FileOutputStream(new File("C:\\Test\\out_decode.txt"));
 
             byte[] inBuf = new byte[in.available()];
             byte[] keyBuf = new byte[key.available()];
@@ -35,7 +37,7 @@ public class FileEncoder  {
                 }
                 outBuf[i] = (byte)(inBuf[i] ^ keyBuf[k]);
             }
-            
+
             out.write(outBuf, 0, outBuf.length);
             in.close();
             key.close();

@@ -21,10 +21,10 @@ class Green extends AbstractAlarm {
 
     @Override
     public void publish(int temperature) {
-        if (!blink & temperature > margin) {
+        if (!blink & temperature >= margin) {
             System.out.println("Green Alarm");
             blink = true;
-        } else if(blink & temperature >= margin) {
+        } else if(blink & temperature < margin) {
             blink = false;
         }
     }
