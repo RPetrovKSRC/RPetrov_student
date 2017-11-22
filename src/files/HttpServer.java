@@ -11,16 +11,17 @@ public class HttpServer {
         try (ServerSocket ssocket = new ServerSocket(12345)) {
             byte[] buf = new byte[10024];
             Socket socket = ssocket.accept();
-            Writer writer = new OutputStreamWriter(socket.getOutputStream());
             BufferedInputStream in = new BufferedInputStream(socket.getInputStream());
             ByteArrayOutputStream result = new ByteArrayOutputStream();
+            Writer writer = new OutputStreamWriter(socket.getOutputStream());
             while (( in.read(buf)) > 0) {
-            result.write(buf);
-                writer.write("HTTP 1.0 200 OK");
+                result.write(buf);
+                System.out.println(result.toString());
+                writer.write("HTTP/1.0 200 OK");
                 writer.write("<html><body>Hello</body></html>");
                 writer.flush();
             }
-            System.out.println(result.toString());
+            //System.out.println(result.toString());
         }
     }
 
