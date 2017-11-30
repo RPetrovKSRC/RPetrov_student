@@ -1,16 +1,24 @@
 package patterns;
+import java.lang.annotation.*;
+
 
 public class Pizza {
     private final int dough;
     private final String cheeze;
     private final String meat;
+    @Exclude
     private final String onion;
+
+    @Target({ElementType.FIELD, ElementType.TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    public @interface Exclude {
+    }
 
     public static class Builder {
         private final int dough;
-        private String cheeze = "";
+        private String cheeze = "mozzarella";
         private String meat = "";
-        private String onion = "";
+        public String onion = "red";
 
         public Builder(int dough) {
             this.dough = dough;
