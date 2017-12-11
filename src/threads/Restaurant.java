@@ -7,6 +7,8 @@ public class Restaurant {
     boolean isNeedPizza;
     boolean isReadyPizza;
     boolean isReadyToEat;
+    boolean close;
+    int i;
 
     public void open() throws InterruptedException {
         Client client = new Client(order) {
@@ -14,9 +16,9 @@ public class Restaurant {
             public void run() {
                 while (!isInterrupted()) {
                     synchronized (order) {
-//                        try {
-//                           if (false) order.wait();
-
+                        if (close) interrupt();
+                        try {
+                         //  if (false) order.wait();
                             if (!isReadyOrder && !isReadyToEat) {
                                 System.out.println("Client make order");
                                 isNeedDeliverOrder = true;
@@ -28,11 +30,16 @@ public class Restaurant {
                                 System.out.println("- - - - - - - - - - -");
                                 isReadyOrder = false;
                                 isReadyToEat = false;
+                                sleep(5000);
+                                i++;
+                                if (i == 2) {
+                                    close = true;
+                                }
                             }
                             order.notifyAll();
-//                        } catch (InterruptedException e) {
-//                            interrupt();
-//                        }
+                        } catch (InterruptedException e) {
+                            interrupt();
+                        }
 
                     }
                 }
@@ -45,7 +52,9 @@ public class Restaurant {
             public void run() {
                 while (!isInterrupted()) {
                     synchronized (order) {
+                        if (close) interrupt();
                         try {
+
                             order.wait();
                             if (isNeedDeliverOrder) {
                                 System.out.println("Waiter Deliver order to cooker");
@@ -75,6 +84,7 @@ public class Restaurant {
             public void run() {
                 while (!isInterrupted()) {
                     synchronized (order) {
+                        if (close) interrupt();
                         try {
                             order.wait();
                             if (isNeedPizza) {
@@ -98,7 +108,6 @@ public class Restaurant {
         waiter.start();
         cooker.start();
         client.start();
-
     }
 
     public static void main(String[] args) {
