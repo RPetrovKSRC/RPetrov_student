@@ -1,9 +1,8 @@
 package exam;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.lang.Thread.sleep;
 
 public class Bank {
    private static List<Account> accounts = new ArrayList<>(10);
@@ -11,12 +10,14 @@ public class Bank {
 
     public synchronized TxResult transferMoney(Account src, Account dest, int amount) {
         if (src.balance < amount) {
+//            System.out.println( src.id +" - not enough money");
             return TxResult.NOT_ENOUGH;
         } else {
+//            System.out.println(src.id + " - > " + dest.id);
+//            System.out.println(src.balance + " - > " + dest.balance);
             dest.balance = dest.balance + amount;
-            System.out.println(dest.balance);
             src.balance = src.balance - amount;
-            System.out.println(src.balance);
+//            System.out.println(src.balance + " - > " + dest.balance + "\n");
             return TxResult.SUCCESS;
         }
     }
@@ -33,35 +34,27 @@ public class Bank {
             System.out.println("Account - " + a.id + " belongs to " + userMap.get(a.userId) + " with balance " + a.balance );
         }
 
-        Transaction1 t1 = bank.new Transaction1();
-        Transaction2 t2 = bank.new Transaction2();
-
-        t2.run();
-        t1.run();
-        System.out.println(" ");
-        System.out.println("Account - " + accounts.get(2).id + " belongs to " + userMap.get(accounts.get(2).userId) + " with balance " + accounts.get(2).balance );
-        System.out.println("Account - " + accounts.get(3).id + " belongs to " + userMap.get(accounts.get(3).userId) + " with balance " + accounts.get(3).balance );
-        System.out.println("Account - " + accounts.get(4).id + " belongs to " + userMap.get(accounts.get(4).userId) + " with balance " + accounts.get(4).balance );
-        System.out.println("Account - " + accounts.get(5).id + " belongs to " + userMap.get(accounts.get(5).userId) + " with balance " + accounts.get(5).balance );
-
-    }
-
-
-    private class Transaction1 extends Thread {
-        @Override
-        public void run() {
-            for (int i = 0; i < 100_000; i++) {
-               TxResult result =  transferMoney(accounts.get(2), accounts.get(5), 10);
+        Random rand = new Random();
+        for (int i = 0; i < 100 ; i++) {
+            int x = rand.nextInt(10);
+            int y = rand.nextInt(10);
+            if (x!=y) {
+                new Thread(() -> bank.transferMoney(accounts.get(x), accounts.get(y), 20)).start();
             }
         }
-    }
 
-    private class Transaction2 extends Thread {
-        @Override
-        public void run() {
-            for (int i = 0; i < 100_000; i++) {
-                TxResult result =  transferMoney(accounts.get(3), accounts.get(4), 20);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sleep(5000);
+                    for (Account a: accounts) {
+                        System.out.println("Account - " + a.id + " belongs to " + userMap.get(a.userId) + " with balance " + a.balance );
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        }
+        }).start();
     }
 }
